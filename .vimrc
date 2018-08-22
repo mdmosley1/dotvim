@@ -15,9 +15,8 @@ set modelines=0
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
-set expandtab
 set encoding=utf-8
-set scrolloff=3
+set scrolloff=3 " keep 3 lines above/below cursor at all times
 set autoindent
 set showmode
 set showcmd
@@ -31,6 +30,7 @@ set laststatus=2
 set number
 set relativenumber
 set noundofile
+set hlsearch
 nnoremap / /\v
 vnoremap / /\v
 set ignorecase
@@ -38,7 +38,6 @@ set smartcase
 set gdefault
 set incsearch
 set showmatch
-set hlsearch
 nnoremap <leader><space> :noh<cr>
 nnoremap <tab> %
 vnoremap <tab> %
@@ -56,6 +55,8 @@ map <Enter> O<ESC> "j
 set background=light
 
 " Mappings and shortcuts
+
+
 
 " Basics
 
