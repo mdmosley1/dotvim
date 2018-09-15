@@ -9,14 +9,13 @@
 filetype plugin indent on
 syntax on
 set shell=/bin/zsh
-set guifont=Menlo:h14
 set nocompatible
 set modelines=0
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set encoding=utf-8
-set scrolloff=3 " keep 3 lines above/below cursor at all times
+set scrolloff=5 " keep 3 lines above/below cursor at all times
 set autoindent
 set showmode
 set showcmd
@@ -31,28 +30,20 @@ set number
 set relativenumber
 set noundofile
 set hlsearch
-nnoremap / /\v
-vnoremap / /\v
-set ignorecase
 set smartcase
 set gdefault
 set incsearch
 set showmatch
 nnoremap <leader><space> :noh<cr>
-nnoremap <tab> %
-vnoremap <tab> %
 set wrap
 set linebreak
 set nolist
-set formatoptions=qrn1
-set spell spelllang=en_us
-set colorcolumn=80
-map <Enter> O<ESC> "j
+" set formatoptions=qrn1
 
 " Aesthetics
 
 " colorscheme solarized
-set background=light
+" set background=light
 
 " Mappings and shortcuts
 
@@ -65,57 +56,63 @@ let mapleader = ","
 
 " Arrows are unvimlike 
 
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
-
+" nnoremap <up> <nop>
+" nnoremap <down> <nop>
+" nnoremap <left> <nop>
+" nnoremap <right> <nop>
+" inoremap <up> <nop>
+" inoremap <down> <nop>
+" inoremap <left> <nop>
+" inoremap <right> <nop>
+" 
 " Miscellaneous 
 
-inoremap <F1> <ESC>
-nnoremap <F1> <ESC>
-vnoremap <F1> <ESC>
-au FocusLost * :wa
+" inoremap <F1> <ESC>
+" nnoremap <F1> <ESC>
+" vnoremap <F1> <ESC>
+" au FocusLost * :wa
 vnoremap . :norm.<CR>
 
 " Leader shortcuts
 
-nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
-nnoremap <leader>a :Ack
-nnoremap <leader>ft Vatzf
-nnoremap <leader>S ?{<CR>jV/^\s*\}?$<CR>k:sort<CR>:noh<CR>
-nnoremap <leader>q gqip
-nnoremap <leader>v V`]
-nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
-nnoremap <leader>w <C-w>v<C-w>l
-nnoremap <leader>j VipJ
-nnoremap <leader>q gqip
-nnoremap <leader>f 1z=
-nnoremap <leader>s ]s
-nnoremap <leader>u :!git pull website master && git commit -am 'Standard commit.' && git push website master<CR><CR>
-nnoremap <leader>p :!git commit -am 'Standard commit.' && git push origin master<CR><CR>
-nnoremap <leader>d :read !date<CR>
-nnoremap <leader>r :!!<CR>
-nnoremap <leader>m :normal @a
-nnoremap <leader>l :CtrlP<CR>
-nnoremap <leader>nt :NERDTree<CR>
-nnoremap <leader>s :set spell!<CR>
-nnoremap <leader>n :set nonumber!<CR>
-nnoremap <leader>rn :set norelativenumber!<CR>
-nnoremap <leader>c :nohl<CR>
-nnoremap <leader>pa :set nopaste!<CR>
-nnoremap <leader>rc :so $MYVIMRC<CR>
-nnoremap <leader>b :BlogSave publish<CR>
-"nnoremap <leader>r :! /Users/daniel/Documents/whup.sh<CR><CR>
-nnoremap <leader>h :set ft=HTML<CR><CR>
+" nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
+" nnoremap <leader>a :ack
+" nnoremap <leader>ft vatzf
+" nnoremap <leader>s ?{<cr>jv/^\s*\}?$<cr>k:sort<cr>:noh<cr>
+" nnoremap <leader>q gqip
+" nnoremap <leader>v v`]
+" nnoremap <leader>ev <c-w><c-v><c-l>:e $myvimrc<cr>
+" nnoremap <leader>w <c-w>v<c-w>l
+" nnoremap <leader>j vipj
+" nnoremap <leader>q gqip
+" nnoremap <leader>f 1z=
+" nnoremap <leader>s ]s
+" nnoremap <leader>u :!git pull website master && git commit -am 'standard commit.' && git push website master<cr><cr>
+" nnoremap <leader>p :!git commit -am 'standard commit.' && git push origin master<cr><cr>
+" nnoremap <leader>d :read !date<cr>
+" nnoremap <leader>r :!!<cr>
+" nnoremap <leader>m :normal @a
+" nnoremap <leader>l :ctrlp<cr>
+" nnoremap <leader>nt :nerdtree<cr>
+" nnoremap <leader>s :set spell!<cr>
+" nnoremap <leader>n :set nonumber!<cr>
+" nnoremap <leader>rn :set norelativenumber!<cr>
+" nnoremap <leader>c :nohl<cr>
+" nnoremap <leader>pa :set nopaste!<cr>
+" nnoremap <leader>rc :so $myvimrc<cr>
+" nnoremap <leader>b :blogsave publish<cr>
+" "nnoremap <leader>r :! /users/daniel/documents/whup.sh<cr><cr>
+" nnoremap <leader>h :set ft=HTML<CR><CR>
 
-" Control shortcuts
+" Control shortcuts for easier switching between windows
 
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
+:nnoremap <Tab> :bnext<CR>
+:nnoremap <S-Tab> :bprevious<CR>
+:nnoremap <C-X> :bdelete<CR>
+
+hi Search cterm=NONE ctermfg=grey ctermbg=blue
